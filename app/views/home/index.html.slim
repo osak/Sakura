@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    title Cherry
+
+  body
+    h1 Cherry
+    #submit-form
+    = form_for @content do |f|
+      = file_field "upload", "content"
+      = submit_tag "Upload"
