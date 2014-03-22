@@ -12,17 +12,17 @@ html
         = submit_tag "Upload"
 
     #content-list
-      table id='content-table'
+      table id='contents-table'
         thead
-          caption Contents
-        tr
-          th Name
-          th Size(Bytes)
-          th Kind
-          th Uploaded
-        - @contents.each do |c|
           tr
-            td =c.name
-            td style='text-align: right' =c.size
-            td =c.kind
-            td =c.created_at
+            th Name
+            th Size(Bytes)
+            th Kind
+            th Uploaded
+        tbody
+          - @contents.each do |c|
+            tr
+              td =link_to c.name, c
+              td style='text-align: right' =c.size
+              td =c.kind
+              td =c.created_at
