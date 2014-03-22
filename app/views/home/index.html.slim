@@ -6,6 +6,23 @@ html
   body
     h1 Cherry
     #submit-form
-    = form_for @content do |f|
-      = f.file_field :file
-      = submit_tag "Upload"
+      - @content ||= Content.new
+      = form_for @content, url: {action: :upload, controller: :contents} do |f|
+        = f.file_field :file
+        = submit_tag "Upload"
+
+    #content-list
+      table id='content-table'
+        thead
+          caption Contents
+        tr
+          th Name
+          th Size(Bytes)
+          th Kind
+          th Uploaded
+        - @contents.each do |c|
+          tr
+            td =c.name
+            td style='text-align: right' =c.size
+            td =c.kind
+            td =c.created_at

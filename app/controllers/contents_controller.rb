@@ -35,7 +35,7 @@ class ContentsController < ApplicationController
     @content = Content.new(param_hash)
     respond_to do |format|
       if @content.save
-        format.html { redirect_to @content, notice: 'Content was successfully created.' }
+        format.html { redirect_to url_for(controller: :home, action: :index), notice: 'Content was successfully created.' }
         format.json { render action: 'show', status: :created, location: @content }
       else
         format.html { render status: :unprocessable_entity }
