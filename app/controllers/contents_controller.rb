@@ -30,7 +30,6 @@ class ContentsController < ApplicationController
     param_hash = {
       name: name,
       size: uploaded_io.size,
-      kind: Content::Kind::Text,
       file: uploaded_io,
     }.freeze
     @content = Content.new(param_hash)
