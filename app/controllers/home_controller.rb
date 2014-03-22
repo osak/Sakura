@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @content = Content.new
+    @contents = Content.order(created_at: :desc)
   end
 end
