@@ -7,5 +7,5 @@ html
     h1 Cherry
     #submit-form
     = form_for @content do |f|
-      = file_field "upload", "content"
+      = f.file_field :file
       = submit_tag "Upload"
