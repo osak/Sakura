@@ -21,17 +21,24 @@ class ContentsController < ApplicationController
   def edit
   end
 
-  # POST /contents
-  # POST /contents.json
-  def create
-    @content = Content.new(content_params)
-
+  # POST /contents/upload
+  # POST /contents/upload.html
+  # POST /contents/upload.json
+  def upload
+    uploaded_io = content_params[:file]
+    name = content_params[:name] || uploaded_io.original_filename
+    param_hash = {
+      name: name,
+      size: uploaded_io.size,
+      kind: Content::Kind::Text
+    }.freeze
+    @content = Content.new(param_hash)
     respond_to do |format|
       if @content.save
         format.html { redirect_to @content, notice: 'Content was successfully created.' }
         format.json { render action: 'show', status: :created, location: @content }
       else
-        format.html { render action: 'new' }
+        format.html { render status: :unprocessable_entity }
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +76,6 @@ class ContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
-      params.require(:content).permit(:name, :size, :type)
+      params.require(:content).permit(:name, :size, :file)
     end
 end

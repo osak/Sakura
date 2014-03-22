@@ -3,7 +3,7 @@ class CreateContents < ActiveRecord::Migration
     create_table :contents do |t|
       t.string :name
       t.integer :size
-      t.integer :type
+      t.integer :kind
 
       t.timestamps
     end

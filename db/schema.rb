@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140322070046) do
   create_table "contents", force: true do |t|
     t.string   "name"
     t.integer  "size"
-    t.integer  "type"
+    t.integer  "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
