@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'slim-rails'
 gem 'figaro'
 gem 'carrierwave'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
