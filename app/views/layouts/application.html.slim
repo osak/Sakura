@@ -4,5 +4,8 @@ html lang="ja"
     title= yield(:title)
     = stylesheet_link_tag "application"
   body
-    p= link_to "Login", login_path(provider: :twitter)
+    - if @current_user
+      p= link_to "Logout(#{@current_user[:name]})", logout_path
+    - else
+      p= link_to "Login", login_path(:twitter)
     = yield

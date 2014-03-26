@@ -7,8 +7,8 @@ Cherry::Application.routes.draw do
     end
   end
   get '/auth/:provider', to: 'sessions#dummy', as: :login
-  match '/auth/:provider/callback' => 'sessions#callback', via: [:get, :post]
-  match '/logout' => 'sessions#destroy', as: :logout, via: [:get]
+  get '/auth/:provider/callback', to: 'sessions#callback'
+  get '/logout', to: 'sessions#destroy', as: :logout
 
   root 'home#index'
 end

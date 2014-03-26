@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   def self.find_or_create_from_auth_hash(auth_hash)
+    auth_hash.symbolize_keys!
     user = find_by_provider_and_uid(auth_hash[:provider], auth_hash[:uid])
     if user.nil?
       user = create! do |user|
