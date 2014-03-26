@@ -40,3 +40,12 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+  provider: 'twitter',
+  uid: 12345,
+  info: {
+    nickname: 'osa_k'
+  }
+})
