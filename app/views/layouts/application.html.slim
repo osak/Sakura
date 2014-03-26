@@ -1,0 +1,7 @@
+doctype html
+html lang="ja"
+  head
+    title= yield(:title)
+  body
+    p= link_to "Login", login_path
+    = yield
