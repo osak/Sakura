@@ -1,28 +1,22 @@
-doctype html
-html
-  head
-    title Cherry
+h1 Cherry
+#submit-form
+  - @content ||= Content.new
+  = form_for @content, url: {action: :upload, controller: :contents} do |f|
+    = f.file_field :file
+    = submit_tag "Upload"
 
-  body
-    h1 Cherry
-    #submit-form
-      - @content ||= Content.new
-      = form_for @content, url: {action: :upload, controller: :contents} do |f|
-        = f.file_field :file
-        = submit_tag "Upload"
-
-    #content-list
-      table id='contents-table'
-        thead
-          tr
-            th Name
-            th Size(Bytes)
-            th Kind
-            th Uploaded
-        tbody
-          - @contents.each do |c|
-            tr
-              td =link_to c.name, c
-              td style='text-align: right' =c.size
-              td =c.kind
-              td =c.created_at
+#content-list
+  table id='contents-table'
+    thead
+      tr
+        th Name
+        th Size(Bytes)
+        th Kind
+        th Uploaded
+    tbody
+      - @contents.each do |c|
+        tr
+          td =link_to c.name, c
+          td style='text-align: right' =c.size
+          td =c.kind
+          td =c.created_at
