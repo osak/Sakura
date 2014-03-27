@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_filter :check_upload_auth, only: [:upload]
 
   # GET /contents
   # GET /contents.json
@@ -77,5 +78,11 @@ class ContentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
       params.require(:content).permit(:name, :size, :file)
+    end
+
+    def check_upload_auth
+      if @current_user.nil? or not @current_user.can_upload
+        redirect_to root_path, flash: {error: "Unauthorized"}
+      end
     end
 end

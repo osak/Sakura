@@ -7,28 +7,41 @@ describe ContentsController do
   context('#upload') do
     let(:name){ "sakuratrick" }
 
-    it "create new content from uploaded file" do
-      expect do
-        post :upload, content: {name: name, file: text_file}
-      end.to change{Content.count}.by 1
+    it "disallow upload by non priviledged user" do
+      post :upload, content: {name: name, file: text_file}
       expect(response).to be_redirect
-      expect(Content.last.name).to eq(name)
-      expect(Content.last.size).to eq(text_file.size)
-      expect(Content.last.kind).to eq(Content::Kind::Text)
+      expect(flash[:error]).to eq("Unauthorized")
     end
 
-    it "create new content from uploaded file with default name" do
-      expect do
-        post :upload, content: {file: text_file}
-      end.to change{Content.count}.by 1
-      expect(Content.last.name).to eq("test.txt")
-    end
+    context('logged in correctly') do
+      let(:user) { FactoryGirl.create(:user, can_upload: true) }
+      before do
+        session[:user_id] = user.id
+      end
 
-    it "distinguish image from other kind of files" do
-      expect do
-        post :upload, content: {file: image_file}
-      end.to change{Content.count}.by 1
-      expect(Content.last.kind).to eq(Content::Kind::Image)
+      it "create new content from uploaded file" do
+        expect do
+          post :upload, content: {name: name, file: text_file}
+        end.to change{Content.count}.by 1
+        expect(response).to be_redirect
+        expect(Content.last.name).to eq(name)
+        expect(Content.last.size).to eq(text_file.size)
+        expect(Content.last.kind).to eq(Content::Kind::Text)
+      end
+
+      it "create new content from uploaded file with default name" do
+        expect do
+          post :upload, content: {file: text_file}
+        end.to change{Content.count}.by 1
+        expect(Content.last.name).to eq("test.txt")
+      end
+
+      it "distinguish image from other kind of files" do
+        expect do
+          post :upload, content: {file: image_file}
+        end.to change{Content.count}.by 1
+        expect(Content.last.kind).to eq(Content::Kind::Image)
+      end
     end
   end
 
