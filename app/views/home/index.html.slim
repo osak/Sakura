@@ -1,9 +1,10 @@
 h1 Cherry
-#submit-form
-  - @content ||= Content.new
-  = form_for @content, url: {action: :upload, controller: :contents} do |f|
-    = f.file_field :file
-    = submit_tag "Upload"
+- if user_can_upload?
+  #submit-form
+    - @content ||= Content.new
+    = form_for @content, url: {action: :upload, controller: :contents} do |f|
+      = f.file_field :file
+      = submit_tag "Upload"
 
 #content-list
   table id='contents-table'
