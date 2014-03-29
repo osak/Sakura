@@ -9,7 +9,7 @@ class Content < ActiveRecord::Base
 
   def kind
     @kind ||= 
-      if file.content_type
+      if not file.content_type.blank?
         kind_from_content_type(file.content_type)
       else
         kind_from_filename(file.filename)
