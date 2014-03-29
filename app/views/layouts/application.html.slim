@@ -2,6 +2,7 @@ doctype html
 html lang="ja"
   head
     title= yield(:title)
+    = yield(:additional_meta)
     = stylesheet_link_tag "application"
   body
     - if flash[:notice]
