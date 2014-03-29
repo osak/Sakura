@@ -28,7 +28,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'slim-rails'
-#gem 'figaro'
 gem 'carrierwave'
 gem 'omniauth'
 gem 'omniauth-twitter'
