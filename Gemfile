@@ -44,7 +44,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'simplecov'
+  gem 'simplecov', '~> 0.8.2', require: false
   gem 'coveralls', require: false
 end
 
