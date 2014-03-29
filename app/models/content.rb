@@ -1,5 +1,7 @@
 class Content < ActiveRecord::Base
   mount_uploader :file, FileUploader
+  belongs_to :owner, class_name: 'User'
+
   module Kind
     Text = :text
     Image = :image

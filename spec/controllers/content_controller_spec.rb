@@ -27,6 +27,7 @@ describe ContentsController do
         expect(Content.last.name).to eq(name)
         expect(Content.last.size).to eq(text_file.size)
         expect(Content.last.kind).to eq(Content::Kind::Text)
+        expect(Content.last.owner).to eq(user)
       end
 
       it "create new content from uploaded file with default name" do

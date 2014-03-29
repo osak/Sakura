@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :contents
   def self.find_or_create_from_auth_hash(auth_hash)
     auth_hash.symbolize_keys!
     user = find_by_provider_and_uid(auth_hash[:provider], auth_hash[:uid])

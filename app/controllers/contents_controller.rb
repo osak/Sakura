@@ -32,6 +32,7 @@ class ContentsController < ApplicationController
       name: name,
       size: uploaded_io.size,
       file: uploaded_io,
+      owner: @current_user,
     }.freeze
     @content = Content.new(param_hash)
     respond_to do |format|
