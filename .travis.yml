@@ -1,3 +1,10 @@
 language: ruby
 rvm:
     - 2.1.0
+    - ruby-head
+bundler_args: -j4 --without development
+before_script:
+    - rake db:migrate RAILS_ENV=test
+matrix:
+    allow_failures:
+        - ruby-head
