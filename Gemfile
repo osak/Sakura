@@ -46,6 +46,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'simplecov', '~> 0.8.2', require: false
   gem 'coveralls', require: false
+  gem 'capybara'
 end
 
 # Use ActiveModel has_secure_password

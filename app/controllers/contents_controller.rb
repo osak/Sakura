@@ -2,23 +2,12 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
   before_filter :check_upload_auth, only: [:upload]
 
-  # GET /contents
-  # GET /contents.json
-  def index
-    @contents = Content.all
-  end
-
-  # GET /contents/1
+    # GET /contents/1
   # GET /contents/1.json
   def show
   end
 
-  # GET /contents/new
-  def new
-    @content = Content.new
-  end
-
-  # GET /contents/1/edit
+    # GET /contents/1/edit
   def edit
   end
 
