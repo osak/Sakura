@@ -1,4 +1,4 @@
-Cherry::Application.routes.draw do
+Sakura::Application.routes.draw do
   resources :users
 
   resources :contents, except: [:create] do

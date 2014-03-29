@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Cherry::Application.load_tasks
+Sakura::Application.load_tasks

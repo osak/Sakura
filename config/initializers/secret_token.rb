@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Cherry::Application.config.secret_key_base = '402c1977b7ae5e6f89799f02f598a10319386b529984fdf079c472015a8786acaf8623c2edadd47c90f1192e4c06e226feea2becc8ba7da6f7603a0bd7fe3933'
+Sakura::Application.config.secret_key_base = '402c1977b7ae5e6f89799f02f598a10319386b529984fdf079c472015a8786acaf8623c2edadd47c90f1192e4c06e226feea2becc8ba7da6f7603a0bd7fe3933'
