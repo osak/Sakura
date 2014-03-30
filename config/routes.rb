@@ -6,8 +6,7 @@ Sakura::Application.routes.draw do
       post 'upload', action: :upload
     end
   end
-  get '/auth/:provider', to: 'sessions#dummy', as: :login
-  get '/auth/:provider/callback', to: 'sessions#callback'
+  post '/login', to: 'sessions#create', as: :login
   get '/logout', to: 'sessions#destroy', as: :logout
 
   root 'home#index'
