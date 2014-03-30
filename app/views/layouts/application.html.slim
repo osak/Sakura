@@ -10,5 +10,10 @@ html lang="ja"
     - if @current_user
       p= link_to "Logout(#{@current_user[:name]})", logout_path
     - else
-      p= link_to "Login", login_path(:twitter)
+      = form_tag(login_path, method: :post, id: :login_form) do
+        = label_tag "name"
+        = text_field_tag "name"
+        = label_tag "password"
+        = password_field_tag "password"
+        = submit_tag "Login"
     = yield
