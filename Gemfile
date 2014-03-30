@@ -39,6 +39,8 @@ end
 
 group :development do
   gem 'rename'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :test do
