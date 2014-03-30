@@ -64,7 +64,6 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
-    hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -84,16 +83,6 @@ GEM
     multi_json (1.9.2)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
-    oauth (0.4.7)
-    omniauth (1.2.1)
-      hashie (>= 1.2, < 3)
-      rack (~> 1.0)
-    omniauth-oauth (1.0.1)
-      oauth
-      omniauth (~> 1.0)
-    omniauth-twitter (1.0.1)
-      multi_json (~> 1.3)
-      omniauth-oauth (~> 1.0)
     polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -203,8 +192,6 @@ DEPENDENCIES
   factory_girl_rails
   jbuilder (~> 1.2)
   jquery-rails
-  omniauth
-  omniauth-twitter
   pry
   pry-rails
   rails (= 4.1.0.rc2)
