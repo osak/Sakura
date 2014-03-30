@@ -1,8 +1,15 @@
+require 'digest/sha1'
+
 class SessionsController < ApplicationController
-  def callback
-    user = User.find_or_create_from_auth_hash(auth_hash)
-    session[:user_id] = user.id
-    redirect_to root_url, notice: "Logged in as #{user[:name]}"
+  def create
+    encrypted_pass = encrypt(post_data[:password])
+    user = User.find_by_name_and_password(post_data[:name], encrypted_pass)
+    if user
+      session[:user_id] = user.id
+      redirect_to root_url, notice: "Logged in as #{user[:name]}"
+    else
+      redirect_to root_url, notice: "Login failed"
+    end
   end
 
   def destroy
@@ -12,7 +19,12 @@ class SessionsController < ApplicationController
 
   private
 
-  def auth_hash
-    request.env["omniauth.auth"]
+  def encrypt(pass)
+    salted = Rails.application.secrets.salt + pass
+    Digest::SHA1.hexdigest(salted)
+  end
+
+  def post_data
+    params.permit(:name, :password)
   end
 end

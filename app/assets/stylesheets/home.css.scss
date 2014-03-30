@@ -1,6 +1,8 @@
+@import 'mixins';
+
 #submit-form {
     border: 1px solid black;
-    border-radius: 5px;
+    @include round-corner;
     padding: 5px;
 }
 
