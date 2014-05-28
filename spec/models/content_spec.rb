@@ -35,7 +35,24 @@ describe Content do
         expect(content.kind).to eq(Content::Kind::Image)
         expect(content_nomime.kind).to eq(Content::Kind::Image)
       end
+    end
 
+    context "Binary" do
+      let(:file) {
+        extend ActionDispatch::TestProcess
+        fixture_file_upload("files/test.bin", "application/octet-stream")
+      }
+      let(:file_nomime) {
+        extend ActionDispatch::TestProcess
+        fixture_file_upload("files/test.bin")
+      }
+      subject(:content) { FactoryGirl.create(:content, file: file) }
+      subject(:content_nomime) { FactoryGirl.create(:content, file: file_nomime) }
+
+      it "is kind of binary file" do
+        expect(content.kind).to eq(Content::Kind::Binary)
+        expect(content_nomime.kind).to eq(Content::Kind::Binary)
+      end
     end
   end
 end

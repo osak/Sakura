@@ -5,6 +5,7 @@ class Content < ActiveRecord::Base
   module Kind
     Text = :text
     Image = :image
+    Binary = :binary
   end
 
   def kind
@@ -22,8 +23,10 @@ class Content < ActiveRecord::Base
     case str
     when /image/
       Kind::Image
-    else
+    when /text/
       Kind::Text
+    else
+      Kind::Binary
     end
   end
 
@@ -31,8 +34,10 @@ class Content < ActiveRecord::Base
     case filename
     when /\.(?:jpg|png|gif)\z/
       Kind::Image
-    else
+    when /\.(?:txt)\z/
       Kind::Text
+    else
+      Kind::Binary
     end
   end
 end
