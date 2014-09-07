@@ -44,6 +44,7 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :test do
@@ -58,7 +59,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
