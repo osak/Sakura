@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
   def set_current_user
     @current_user = User.find_by(id: session[:user_id])
   end
+
+  def default_url_options
+    if Rails.env.production?
+      {:host => "sakura.osak.jp"}
+    else
+      {}
+    end
+  end
 end
