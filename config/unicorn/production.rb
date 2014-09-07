@@ -7,4 +7,4 @@ pid "#{app_path}/current/tmp/pids/unicorn.pid"
 listen "/tmp/sakura.sock"
 
 stderr_path "log/unicorn.stderr.log"
-strout_path "log/unicorn.stdout.log"
+stdout_path "log/unicorn.stdout.log"
