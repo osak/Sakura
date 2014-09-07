@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ApplicationHelper do
   describe "user_can_upload?" do
     context "Not logged in" do
-      it { expect(helper.user_can_upload?).to be_false }
+      it { expect(helper.user_can_upload?).to be false }
     end
 
     context "Logged in with uploadable user" do
@@ -11,7 +11,7 @@ describe ApplicationHelper do
       before do
         assign(:current_user, user)
       end
-      it { expect(helper.user_can_upload?).to be_true }
+      it { expect(helper.user_can_upload?).to be true }
     end
 
     context "Logged in with non-uploadable user" do
@@ -19,7 +19,7 @@ describe ApplicationHelper do
       before do
         assign(:current_user, user)
       end
-      it { expect(helper.user_can_upload?).to be_false }
+      it { expect(helper.user_can_upload?).to be false }
     end
   end
 end
