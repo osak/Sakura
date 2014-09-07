@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'Sakura'
-set :repo_url, 'git@github.com:osak/Sakura.git'
+set :repo_url, 'https://github.com/osak/Sakura.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -37,7 +37,10 @@ set :linked_files, %w{config/database.yml config/secrets.yml}
 #set :rbenv_type, :user
 #set :rbenv_ruby, 2.1.1
 
+set :user, 'sakura'
 set :rails_env, 'production'
+
+set :bundle_flags, '--deployment -j4'
 
 namespace :deploy do
 
@@ -59,5 +62,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
