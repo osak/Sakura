@@ -1,6 +1,6 @@
 worker_processes 2
 
-app_path = File.expand_path(File.join(__dir__, "../.."))
+app_path = File.expand_path("../..", __FILE__)
 working_directory "#{app_path}/current"
 pid "#{app_path}/current/tmp/pids/unicorn.pid"
 
