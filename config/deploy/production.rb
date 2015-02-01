@@ -1,13 +1,4 @@
-# Simple Role Syntax
-# ==================
-# Supports bulk-adding hosts to roles, the primary server in each group
-# is considered to be the first unless any hosts have the primary
-# property set.  Don't declare `role :all`, it's a meta role.
-
-role :app, %w{sakura@osak.jp}
-role :web, %w{sakura@osak.jp}
-role :db,  %w{sakura@osak.jp}
-
+set :stage, :production
 
 # Extended Server Syntax
 # ======================
@@ -21,6 +12,7 @@ server 'osak.jp',
   ssh_options: {
     user: 'sakura',
     keys: File.expand_path("~/.ssh/sakura_key"),
+    port: 10022
   }
 
 
